@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Cock</title>
+</head>
+
+<body>
+<!-- //////////////////////////////////////////////////////// -->
+    <div class="clock">
+        <div class="clock-face">
+            <div class="hand hour-hand"></div>
+            <div class="hand min-hand"></div>
+            <div class="hand second-hand"></div>
+        </div>
+    </div>
+<!-- //////////////////////////////////////////////////////// -->
+<style>
+    html {
+        background: rgb(155,149,255);
+        background: linear-gradient(0deg, rgba(155,149,255,1) 0%, rgba(0,212,255,1) 100%);
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 100%;
+    }
+
+    .hand {
+        width: 50%;
+        height: 6px;
+        background: black;
+        position: absolute;
+        top: 50%;
+        transform-origin: 100%;
+        transform: rotate(90deg);
+        transition: all 0.05s;
+    }
+</style>
+<!-- //////////////////////////////////////////////////////// -->
+<script>
+    const secondHand = document.querySelector('.second-hand')
+
+    function setDate(){
+        const now = new Date();
+        const seconds = now.getSeconds();
+        const secondsDegrees = ((seconds / 60)* 360);
+        secondHand.style.transform = `rotate(${secondsDegrees}deg)`
+    }
+
+    setInterval(setDate, 1000);
+</script>
+</body>
+</html>
